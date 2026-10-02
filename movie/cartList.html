@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Insert title here</title>
+<link  rel="stylesheet" type="text/css" href="css/basic.css"  />
+<style type="text/css">
+.poster {
+	width : 150px;
+	height : 150px;
+	
+}
+
+a{text-decoration: none}
+</style>
+
+
+
+</head>
+<body>
+<button name="delItem">삭제</button>
+<hr>
+		<article class="main">
+		<section>
+			<table width="80%"  align="center"  >
+			<caption class="caption">찜 리스트</caption>
+			<thead>
+				<tr><th>이미지</th><th>상품번호</th><th>상품이름</th><th>가격</th><th>삭제</th></tr>
+			</thead>
+			<tbody id="content">
+			   <!-- 찜목록 출력 -->
+				<script>
+					let total = 0;
+					let html = "";
+
+					for (let i = 0; i < localStorage.length; i++) {
+						const id = localStorage.key(i);
+						const info = localStorage.getItem(id).split(",");  
+
+						total += Number(info[2]);
+						html += `<tr align="center">
+							<td><img class="poster" src="${info[1]}"></td>
+							<td>${id}</td>
+							<td>${info[0]}</td>
+							<td>${info[2].toLocaleString()}원</td>
+							<td><button name="delItem" id="${id}">삭제</button></td>
+						</tr>`;
+					}
+					document.getElementById("content").innerHTML = html;
+
+					
+					document.querySelectorAll("#content button[name=delItem]").forEach((btn) => {
+						btn.addEventListener("click", (event) => {
+							localStorage.removeItem(event.target.id);
+							location.reload();
+						});
+					});
+				</script>
+				
+			    
+			</tbody>
+			</table>
+		</section>
+		<section  class="toalprice" id="price">
+			<!-- 가격 -->
+				<script>
+					document.getElementById("price").innerHTML = `<b>주문가격 : ${total}원</b>`;
+				</script>
+		</section>
+		<section class="link">
+			<table   align="center">
+			<tr><td align="center">
+				<a href="">주문하러 가기</a> 
+				<a href="index.html">DVD LIST</a> 
+			</td></tr>
+			</table>
+		</section>
+		</article>
+</body>
+</html>

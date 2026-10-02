@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link  rel="stylesheet" type="text/css" href="css/App.css" />
+    <link  rel="stylesheet" type="text/css" href="css/Header.css" />
+    <link  rel="stylesheet" type="text/css" href="css/Editor.css" />
+    <link  rel="stylesheet" type="text/css" href="css/List.css" />
+    <link  rel="stylesheet" type="text/css" href="css/Todoltem.css" />
+
+</head>
+<body>
+    <div class="App">
+        <div class="Header">
+            <h3>오늘의 Plan😊</h3>
+            <h1 id="date"></h1>
+        </div>
+            <script>
+                let today = new Date();
+
+                document.getElementById("date").innerHTML =
+                `${today.getFullYear()}-${today.getMonth() + 1}-${today.getDate()}`;
+            </script>
+        <form>
+            <div class="Editor">
+                <input type="text" name="inputlist" placeholder="새로운 todo">
+                <button type="submit">추가</button>
+            </div>
+        </form>
+        <div class="List">
+            <h4>Todo list🌳</h4>
+            <input type="text" id="search" placeholder="검색어를 입력해주세요"/>
+            <div class="todos_wrapper">
+                <div class="TodoItem">
+                    <input type="checkbox"/>
+                    <div class="content">친구랑 점심먹기</div>
+                    <div class="data">2026-10-1</div>
+                    <button onClick="">삭제</button>
+                </div>
+                <div class="TodoItem">
+                    <input type="checkbox"/>
+                    <div class="content">저녁에 숙제하기</div>
+                    <div class="data">2026-10-1</div>
+                    <button onClick="">삭제</button>
+                </div>
+                <div class="TodoItem">
+                    <input type="checkbox"/>
+                    <div class="content">잠자기 전에 일기쓰기</div>
+                    <div class="data">2026-10-1</div>
+                    <button onClick="">삭제</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
